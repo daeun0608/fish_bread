@@ -11,6 +11,12 @@ sales={
     "초코붕어빵":0,
 }
 
+price={
+    "팥붕어빵":1000,
+    "슈크림붕어빵":1200,
+    "초코붕어빵":1500,
+}
+
 def order_bread():
     while True:
         bread_type=input("주문할 붕어빵 선택 (팥붕어빵,슈크림붕어빵,초코붕어빵)\n만약 뒤로가길 원한다면 '뒤로가기'룰 압력하세요. --> ")
@@ -44,10 +50,18 @@ def admin_mode():
         else:
             print('잘못된 입력입니다, 다시 입력하세요.')
 
+def calculate_sales():
+    #total_sales= sum(sales[key] * price[key] for key in sales)
+    total=0
+    for key in sales:
+        total+=sales[key]*price[key]
+    print(f'오늘의 총 매출은 {total}입니다.')
+
 while True:
     mode=input("원하는 모드를 선택하세요(주문, 관리자, 종료) : ")
 
     if mode=='종료' :
+        calculate_sales()           #임시용
         print("시스템이 종료되었습니다.")
         break
     elif mode=='주문' :
